@@ -1,0 +1,89 @@
+package com.company;
+import java.util.Scanner;
+public class Main {
+    private int rollNo;
+    private String name;
+    private int[] subjectMarks;
+    // Constructor
+    public Main(int rollNo, String name, int[] subjectMarks) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.subjectMarks = subjectMarks;
+    }
+    // Getter and setter methods
+    public int getRollNo() {
+        return rollNo;
+    }
+    public void setRollNo(int rollNo) {
+        this.rollNo = rollNo;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int[] getSubjectMarks() {
+        return subjectMarks;
+    }
+    public void setSubjectMarks(int[] subjectMarks) {
+        this.subjectMarks = subjectMarks;
+    }
+    // Method to compute total marks
+    public int computeTotalMarks() {
+        int totalMarks = 0;
+        for (int mark : subjectMarks) {
+            totalMarks += mark;
+        }
+        return totalMarks;
+    }
+    // Method to compute percentage
+    public double computePercentage() {
+        int totalMarks = computeTotalMarks();
+        return (double) totalMarks / subjectMarks.length;
+    }
+    // Method to compute grade
+    public char computeGrade() {
+        double percentage = computePercentage();
+        if (percentage >= 90) {
+            return 'A';
+        } else if (percentage >= 80) {
+            return 'B';
+        } else if (percentage >= 70) {
+            return 'C';
+        } else if (percentage >= 60) {
+            return 'D';
+        } else {
+            return 'F';
+        }
+    }
+    // Method to print student report card
+    public void printReportCard() {
+        System.out.println("Student Report Card");
+        System.out.println("Roll No: " + rollNo);
+        System.out.println("Name: " + name);
+        System.out.println("Subject Marks:");
+        for (int i = 0; i < subjectMarks.length; i++) {
+            System.out.println("Subject " + (i + 1) + ": " + subjectMarks[i]);
+        }
+        System.out.println("Total Marks: " + computeTotalMarks());
+        System.out.println("Percentage: " + computePercentage() + "%");
+        System.out.println("Grade: " + computeGrade());
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Roll No: ");
+        int rollNo = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Enter Name: ");
+        String name = scanner.nextLine();
+        int[] marks = new int[3];
+        for (int i = 0; i < 3; i++) {
+            System.out.print("Enter marks for Subject " + (i + 1) + ": ");
+            marks[i] = scanner.nextInt();
+        }
+        Main student = new Main(rollNo, name, marks);
+        student.printReportCard();
+        scanner.close();
+    }
+}
