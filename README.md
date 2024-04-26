@@ -1,1 +1,2 @@
 # Tic-Tac-Toe-Game
+A simple console-based implementation of the classic Tic-Tac-Toe game in Java. Two players ('0' and '1') take turns placing their symbols on a 3x3 grid. The game checks for a winning condition (3 symbols in a row) or a draw after each move. Input validation and game logic handling are included. A practical exercise for beginners to learn programming fundamentals like arrays, loops, conditionals, and user input.
